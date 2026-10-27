@@ -12,14 +12,14 @@
 
     # Extras
     inputs.disko.nixosModules.disko
-    ./disko.nix
+    ./extras/disko.nix
   ];
 
   ## Module overrides
   # user.nix
   users.users.primaryUser = {
     name = "server";
-    openssh.authorizedKeys.keys = [ (builtins.readFile ./Void.pub) ];
+    openssh.authorizedKeys.keys = [ (builtins.readFile ./extras/Void.pub) ];
   };
 
   ## Host specifics

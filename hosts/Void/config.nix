@@ -12,7 +12,7 @@
 
     # Extras
     # inputs.disko.nixosModules.disko
-    # ./disko.nix
+    # ./extras/disko.nix
   ];
 
   ## Module overrides
