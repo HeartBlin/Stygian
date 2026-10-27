@@ -11,7 +11,8 @@
     user
 
     # Extras
-    ./extras/disko.nix
+    # ./extras/disko.nix
+    ./extras/networking.nix
   ];
 
   ## Module overrides
