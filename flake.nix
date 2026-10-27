@@ -1,1 +1,41 @@
-{ outputs = _: { }; }
+{
+  inputs = {
+    nixpkgs.url = "https://channels.nixos.org/nixos-unstable/nixexprs.tar.zst";
+    null.url = "git+https://codeberg.org/HeartBlin/Null.git";
+
+    disko = {
+      url = "github:nix-community/disko/latest";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote/v1.2.0";
+      inputs.pre-commit.follows = "null";
+    };
+  };
+
+  outputs = inputs: let
+    inherit (inputs) self;
+    inherit (inputs.nixpkgs) lib;
+  in {
+    # Find all hosts
+    nixosConfigurations = with lib;
+      readDir ./hosts
+      |> filterAttrs (n: v: v == "directory" && pathExists ./hosts/${n}/config.nix)
+      |> mapAttrs (host: _: nixosSystem {
+        specialArgs = { inherit inputs self; };
+        modules = [ ./hosts/${host}/config.nix ];
+      });
+
+    # Find all modules
+    nixosModules = with lib;
+      ./modules
+      |> filesystem.listFilesRecursive
+      |> filter (p: hasSuffix ".nix" p && !hasInfix "/_" (removePrefix (toString ./modules) (toString p)))
+      |> groupBy (p: removeSuffix ".nix" (baseNameOf p))
+      |> mapAttrs (k: v:
+        if length v == 1
+        then head v
+        else throw "Duplicate '${k}': ${toString v}");
+  };
+}
