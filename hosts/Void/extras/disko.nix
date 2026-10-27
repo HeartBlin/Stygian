@@ -1,4 +1,7 @@
+{ inputs, ... }:
+
 {
+  imports = [ inputs.disko.nixosModules.disko ];
   disko.devices.disk.main = {
     device = "/dev/disk/by-id/nvme-Samsung_SSD_970_EVO_Plus_1TB_S4EWNX1W519812T";
     type = "disk";

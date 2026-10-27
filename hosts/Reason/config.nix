@@ -1,4 +1,4 @@
-{ inputs, self, ... }:
+{ self, ... }:
 
 {
   imports = with self.nixosModules; [
@@ -11,7 +11,6 @@
     user
 
     # Extras
-    inputs.disko.nixosModules.disko
     ./extras/disko.nix
   ];
 

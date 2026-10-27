@@ -11,7 +11,6 @@
     user
 
     # Extras
-    # inputs.disko.nixosModules.disko
     # ./extras/disko.nix
   ];
 
