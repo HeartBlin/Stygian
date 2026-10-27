@@ -7,6 +7,7 @@
 
     # Core
     bootloader
+    chrony
     user
 
     # Extras
