@@ -8,6 +8,7 @@
     # Core
     bootloader
     chrony
+    nix
     user
 
     # Extras
