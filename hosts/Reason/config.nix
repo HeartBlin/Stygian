@@ -10,6 +10,7 @@
     chrony
     nix
     user
+    zswap
 
     # Extras
     ./extras/disko.nix
