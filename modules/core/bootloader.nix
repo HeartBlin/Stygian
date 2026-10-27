@@ -2,6 +2,7 @@
 
 {
   imports = [ inputs.lanzaboote.nixosModules.lanzaboote ];
+
   environment.systemPackages = [ pkgs.sbctl ];
   boot = {
     loader = {
