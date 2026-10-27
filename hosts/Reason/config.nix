@@ -3,6 +3,10 @@
 {
   # Modules
   imports = with self.nixosModules; [
+    # Apps
+    nh
+
+    # Core
     bootloader
 
     # Extras
