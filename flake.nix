@@ -12,6 +12,11 @@
       url = "github:nix-community/lanzaboote/v1.2.0";
       inputs.pre-commit.follows = "null";
     };
+
+    hjem = {
+      url = "github:feel-co/hjem";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs: let
