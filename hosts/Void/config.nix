@@ -25,6 +25,7 @@
     # Hardware
     amd
     asus
+    audio
 
     # Security
     keys
