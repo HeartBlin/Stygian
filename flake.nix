@@ -2,6 +2,7 @@
   inputs = {
     nixpkgs.url = "https://channels.nixos.org/nixos-unstable/nixexprs.tar.zst";
     null.url = "git+https://codeberg.org/HeartBlin/Null.git";
+    aequor.url = "github:HeartBlin/Verneuil";
 
     disko = {
       url = "github:nix-community/disko/latest";

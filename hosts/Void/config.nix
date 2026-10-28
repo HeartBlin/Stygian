@@ -4,7 +4,8 @@
   imports = with self.nixosModules; [
     # Apps
     chromium
-    gaming.nix
+    gaming
+    ghostty
     nh
     shell
 
