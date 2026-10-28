@@ -22,6 +22,9 @@
     # Desktop
     gnome
 
+    # Hardware
+    amd
+
     # Security
     keys
 
