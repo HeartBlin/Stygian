@@ -4,6 +4,7 @@
   imports = with self.nixosModules; [
     # Apps
     nh
+    shell
 
     # Core
     bootloader
