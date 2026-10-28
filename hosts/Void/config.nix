@@ -7,6 +7,7 @@
     gaming
     ghostty
     git
+    mangohud
     nh
     shell
 
