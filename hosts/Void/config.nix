@@ -3,6 +3,7 @@
 {
   imports = with self.nixosModules; [
     # Apps
+    chromium
     nh
     shell
 
@@ -14,7 +15,7 @@
     zswap
 
     # Extras
-    # ./extras/disko.nix
+    ./extras/disko.nix
     ./extras/networking.nix
   ];
 
