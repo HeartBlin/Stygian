@@ -4,6 +4,7 @@
   imports = with self.nixosModules; [
     # Apps
     chromium
+    gaming.nix
     nh
     shell
 
