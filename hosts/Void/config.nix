@@ -6,6 +6,7 @@
     chromium
     gaming
     ghostty
+    git
     nh
     shell
 
