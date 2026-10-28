@@ -12,15 +12,18 @@
     shell
     vscodium
 
-    # Desktop
-    gnome
-
     # Core
     bootloader
     chrony
     nix
     user
     zswap
+
+    # Desktop
+    gnome
+
+    # Security
+    keys
 
     # Extras
     ./extras/disko.nix
