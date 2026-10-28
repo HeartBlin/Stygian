@@ -26,6 +26,7 @@
     amd
     asus
     audio
+    bluetooth
 
     # Security
     keys
