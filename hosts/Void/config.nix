@@ -12,6 +12,9 @@
     shell
     vscodium
 
+    # Desktop
+    gnome
+
     # Core
     bootloader
     chrony
