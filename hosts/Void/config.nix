@@ -24,6 +24,7 @@
 
     # Hardware
     amd
+    asus
 
     # Security
     keys
