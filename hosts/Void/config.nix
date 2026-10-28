@@ -10,6 +10,7 @@
     mangohud
     nh
     shell
+    vscodium
 
     # Core
     bootloader
