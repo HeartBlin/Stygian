@@ -1,12 +1,10 @@
 # Shell extensions
 # Again, Vicinae and co. do their own thing
-{ inputs, lib, pkgs, ... }:
+{ lib, pkgs, self, ... }:
 
-let
-  aequor = inputs.aequor.packages.${pkgs.stdenv.hostPlatform.system};
-in {
+{
   environment.sessionVariables.GI_TYPELIB_PATH = [
-    "${aequor.gnome-rounded-blur}/lib/girepository-1.0"
+    "${self.packages.${pkgs.stdenv.hostPlatform.system}.gnome-rounded-blur}/lib/girepository-1.0"
   ];
 
   _gnome = {
@@ -18,7 +16,7 @@ in {
         no-overview
         bluetooth-battery-meter
       ])
-      ++ [ aequor.gradia-capture ];
+      ++ [ self.packages.${pkgs.stdenv.hostPlatform.system}.gradia-capture ];
 
     dconf.user = {
       # Just Perfection
