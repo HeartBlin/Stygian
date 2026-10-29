@@ -72,6 +72,11 @@
       KEYBOARD_KEY_70050=reserved
   '';
 
+  # Needs a repaste, it is unstable
+  systemd.tmpfiles.rules = [
+    "w /sys/devices/system/cpu/cpu*/cpufreq/scaling_max_freq - - - - 3700000"
+  ];
+
   # I want fstrim
   services.fstrim.enable = true;
 
