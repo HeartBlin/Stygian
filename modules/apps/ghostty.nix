@@ -50,7 +50,7 @@ let
     window-padding-color = "extend";
   };
 in {
-  environment.systemPackages = [ pkgs.ghostty-znver2 ];
+  environment.systemPackages = [ pkgs.ghostty ];
   fonts.packages = [ pkgs.nerd-fonts.caskaydia-cove ];
   hjem.users.primaryUser.files.".config/ghostty/config".text =
     lib.generators.toKeyValue
