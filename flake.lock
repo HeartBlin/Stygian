@@ -8,11 +8,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1793218078,
-        "narHash": "sha256-tZZT56SbKQAUGmbzskabQ8bMwpVOpiVLPauSV7BZ0tI=",
+        "lastModified": 1793266385,
+        "narHash": "sha256-ouCq/yALbCM1ccu8IjcITaKd5TebpYnmOoKLAWCBUo0=",
         "owner": "HeartBlin",
         "repo": "Verneuil",
-        "rev": "44747ca068a28d701bbcc6cd17d422c62988263b",
+        "rev": "b503d01190b1f9497571f0409f8dcb41041b0f61",
         "type": "github"
       },
       "original": {
@@ -214,11 +214,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1793166571,
-        "narHash": "sha256-ACw4cDhGDHJoTclONZJF81tbtho7ae+Ps9OXd/DHcvE=",
-        "rev": "fa45202b90a351983649116adb577827b2a9a679",
+        "lastModified": 1793225069,
+        "narHash": "sha256-GYpArmwi/iMuX2ov31oCBhAXRMJdNX9kOl2LZHCuR6M=",
+        "rev": "e62746b0b472753ef019baceab6f1e2e52014980",
         "type": "tarball",
-        "url": "https://releases.nixos.org/nixpkgs/nixpkgs-26.11pre1103604.fa45202b90a3/nixexprs.tar.zst"
+        "url": "https://releases.nixos.org/nixpkgs/nixpkgs-26.11pre1104102.e62746b0b472/nixexprs.tar.zst"
       },
       "original": {
         "type": "tarball",

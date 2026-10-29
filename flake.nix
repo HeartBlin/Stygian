@@ -28,7 +28,7 @@
   outputs = inputs: let
     inherit (inputs) self;
     inherit (inputs.nixpkgs) lib;
-    forAllSystems = lib.genAttrs [ "x86_64-linux" ];
+    # forAllSystems = lib.genAttrs [ "x86_64-linux" ];
   in {
     # Find all hosts
     nixosConfigurations = with lib;
@@ -49,18 +49,5 @@
         if length v == 1
         then head v
         else throw "Duplicate '${k}': ${toString v}");
-
-    # Cleanup for VM tests
-    apps = forAllSystems (system: let
-      pkgs = inputs.nixpkgs.legacyPackages.${system};
-    in {
-      default = {
-        type = "app";
-        program = lib.getExe (pkgs.writeShellApplication {
-          name = "vm-clean-cwd";
-          text = "rm -rf result -- ./*.fd ./*.qcow2";
-        });
-      };
-    });
   };
 }
