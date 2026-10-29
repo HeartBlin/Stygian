@@ -2,7 +2,6 @@
   inputs = {
     nixpkgs.url = "https://channels.nixos.org/nixos-unstable/nixexprs.tar.zst";
     null.url = "git+https://codeberg.org/HeartBlin/Null.git";
-    aequor.url = "github:HeartBlin/Verneuil";
 
     disko = {
       url = "github:nix-community/disko/latest";
@@ -10,8 +9,11 @@
     };
 
     lanzaboote = {
-      url = "github:nix-community/lanzaboote/v1.2.0";
-      inputs.pre-commit.follows = "null";
+      url = "github:nix-community/lanzaboote";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        pre-commit.follows = "null";
+      };
     };
 
     hjem = {

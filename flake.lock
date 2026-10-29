@@ -1,26 +1,5 @@
 {
   "nodes": {
-    "aequor": {
-      "inputs": {
-        "fluxgrow": "fluxgrow",
-        "hjem": "hjem",
-        "lanzaboote": "lanzaboote",
-        "nixpkgs": "nixpkgs"
-      },
-      "locked": {
-        "lastModified": 1793266385,
-        "narHash": "sha256-ouCq/yALbCM1ccu8IjcITaKd5TebpYnmOoKLAWCBUo0=",
-        "owner": "HeartBlin",
-        "repo": "Verneuil",
-        "rev": "b503d01190b1f9497571f0409f8dcb41041b0f61",
-        "type": "github"
-      },
-      "original": {
-        "owner": "HeartBlin",
-        "repo": "Verneuil",
-        "type": "github"
-      }
-    },
     "crane": {
       "locked": {
         "lastModified": 1790899423,
@@ -28,21 +7,6 @@
         "owner": "ipetkov",
         "repo": "crane",
         "rev": "47b6b27ed9a3a9181415e4367d0c30ab2a0e0250",
-        "type": "github"
-      },
-      "original": {
-        "owner": "ipetkov",
-        "repo": "crane",
-        "type": "github"
-      }
-    },
-    "crane_2": {
-      "locked": {
-        "lastModified": 1789760033,
-        "narHash": "sha256-jtT4yxZpR8seYnlCMMWSSPlFN92zO6ICuZ8pJrmi86k=",
-        "owner": "ipetkov",
-        "repo": "crane",
-        "rev": "73b980519cefc727a5f6cc8e5c0947a2f9be6edd",
         "type": "github"
       },
       "original": {
@@ -72,59 +36,7 @@
         "type": "github"
       }
     },
-    "flake-compat": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1767039857,
-        "narHash": "sha256-vNpUSpF5Nuw8xvDLj2KCwwksIbjua2LZCqhV1LNRDns=",
-        "owner": "NixOS",
-        "repo": "flake-compat",
-        "rev": "5edf11c44bc78a0d334f6334cdaf7d60d732daab",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "repo": "flake-compat",
-        "type": "github"
-      }
-    },
-    "fluxgrow": {
-      "locked": {
-        "lastModified": 1792790791,
-        "narHash": "sha256-rzoeHLoboVP4crfgeUD63mewCqvOboLIqHlyUawU9AA=",
-        "owner": "HeartBlin",
-        "repo": "FluxGrow",
-        "rev": "fc977d528f46468400f7b92146c013d54f3a8837",
-        "type": "github"
-      },
-      "original": {
-        "owner": "HeartBlin",
-        "repo": "FluxGrow",
-        "type": "github"
-      }
-    },
     "hjem": {
-      "inputs": {
-        "nixpkgs": [
-          "aequor",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1793026809,
-        "narHash": "sha256-BohcZsIqBOd6YL6+jUkdM4GE+aQc72E6yrqVyt1z5X4=",
-        "owner": "feel-co",
-        "repo": "hjem",
-        "rev": "d219ef55ab7311d884cf33e114561082fec95f34",
-        "type": "github"
-      },
-      "original": {
-        "owner": "feel-co",
-        "repo": "hjem",
-        "type": "github"
-      }
-    },
-    "hjem_2": {
       "inputs": {
         "nixpkgs": [
           "nixpkgs"
@@ -148,10 +60,11 @@
       "inputs": {
         "crane": "crane",
         "nixpkgs": [
-          "aequor",
           "nixpkgs"
         ],
-        "pre-commit": "pre-commit",
+        "pre-commit": [
+          "null"
+        ],
         "rust-overlay": "rust-overlay"
       },
       "locked": {
@@ -164,30 +77,6 @@
       },
       "original": {
         "owner": "nix-community",
-        "repo": "lanzaboote",
-        "type": "github"
-      }
-    },
-    "lanzaboote_2": {
-      "inputs": {
-        "crane": "crane_2",
-        "nixpkgs": "nixpkgs_2",
-        "pre-commit": [
-          "null"
-        ],
-        "rust-overlay": "rust-overlay_2"
-      },
-      "locked": {
-        "lastModified": 1790423250,
-        "narHash": "sha256-sr4Kfp6yaXUeyKL6n0Y8/ElcR3momIRC20HFc+LF22s=",
-        "owner": "nix-community",
-        "repo": "lanzaboote",
-        "rev": "c1c5edd31802d181c8aa2c71588995d93425d650",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "ref": "v1.2.0",
         "repo": "lanzaboote",
         "type": "github"
       }
@@ -213,35 +102,6 @@
       }
     },
     "nixpkgs": {
-      "locked": {
-        "lastModified": 1793225069,
-        "narHash": "sha256-GYpArmwi/iMuX2ov31oCBhAXRMJdNX9kOl2LZHCuR6M=",
-        "rev": "e62746b0b472753ef019baceab6f1e2e52014980",
-        "type": "tarball",
-        "url": "https://releases.nixos.org/nixpkgs/nixpkgs-26.11pre1104102.e62746b0b472/nixexprs.tar.zst"
-      },
-      "original": {
-        "type": "tarball",
-        "url": "https://channels.nixos.org/nixpkgs-unstable/nixexprs.tar.zst"
-      }
-    },
-    "nixpkgs_2": {
-      "locked": {
-        "lastModified": 1789785513,
-        "narHash": "sha256-B44WL6h0XoLjJ41bUPJk0X5SDinLCII//6EcBLXKiJ0=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "20b1ddd1aa5ace70c9468305030aa4f9ef79671b",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_3": {
       "locked": {
         "lastModified": 1793110635,
         "narHash": "sha256-yXRSdZdZZqccEL+j11lc1gFG1f7V5j8N7oPBTHwf7n4=",
@@ -269,44 +129,19 @@
         "url": "https://codeberg.org/HeartBlin/Null.git"
       }
     },
-    "pre-commit": {
-      "inputs": {
-        "flake-compat": "flake-compat",
-        "nixpkgs": [
-          "aequor",
-          "lanzaboote",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1790500375,
-        "narHash": "sha256-XN3sDtn8TU9hAc9xqZ+SqRB/HHm2wjxM6aSWYLJU+oo=",
-        "owner": "cachix",
-        "repo": "git-hooks.nix",
-        "rev": "a0e4241b51206fbcbf52fd322eb5f0cd80f153c4",
-        "type": "github"
-      },
-      "original": {
-        "owner": "cachix",
-        "repo": "git-hooks.nix",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
-        "aequor": "aequor",
         "disko": "disko",
-        "hjem": "hjem_2",
-        "lanzaboote": "lanzaboote_2",
+        "hjem": "hjem",
+        "lanzaboote": "lanzaboote",
         "nix-index-database": "nix-index-database",
-        "nixpkgs": "nixpkgs_3",
+        "nixpkgs": "nixpkgs",
         "null": "null"
       }
     },
     "rust-overlay": {
       "inputs": {
         "nixpkgs": [
-          "aequor",
           "lanzaboote",
           "nixpkgs"
         ]
@@ -317,27 +152,6 @@
         "owner": "oxalica",
         "repo": "rust-overlay",
         "rev": "87ffb7f777aef2e2647fd8fd718a5b3cbc825588",
-        "type": "github"
-      },
-      "original": {
-        "owner": "oxalica",
-        "repo": "rust-overlay",
-        "type": "github"
-      }
-    },
-    "rust-overlay_2": {
-      "inputs": {
-        "nixpkgs": [
-          "lanzaboote",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1789889921,
-        "narHash": "sha256-aL/ogiN7qZCGeNovS1f9hX73jwYIKb4Pcq6AZm57WtY=",
-        "owner": "oxalica",
-        "repo": "rust-overlay",
-        "rev": "1fb104a12a8667045559b2575d6d448ae2fbd99b",
         "type": "github"
       },
       "original": {
