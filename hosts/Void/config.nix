@@ -1,4 +1,4 @@
-{ inputs, pkgs, self, ... }:
+{ pkgs, self, ... }:
 
 {
   imports = with self.nixosModules; [
@@ -27,6 +27,7 @@
     asus
     audio
     bluetooth
+    nvidia
 
     # Security
     keys
@@ -37,6 +38,16 @@
   ];
 
   ## Module overrides
+  # git.nix
+  programs.git.config.user = {
+    name = "HeartBlin";
+    email = "HeartBlin@noreply.codeberg.org";
+    signingkey = "/home/heartblin/.ssh/Codeberg";
+  };
+
+  # nh.nix
+  programs.nh.flake = "/home/heartblin/Projects/Arbor";
+
   # nvidia.nix
   hardware.nvidia.prime = {
     nvidiaBusId = "PCI:1@0:0:0";
@@ -61,9 +72,12 @@
       KEYBOARD_KEY_70050=reserved
   '';
 
+  # I want fstrim
+  services.fstrim.enable = true;
+
   # Kernel changes
   boot = {
-    kernelPackages = pkgs.linuxPackagesFor inputs.aequor.packages."x86_64-linux".linux-alexandrite;
+    kernelPackages = pkgs.linuxPackages_latest;
     kernelModules = [ "kvm-amd" ];
     initrd = {
       availableKernelModules = [ "nvme" "xhci_pci" "usbhid" "usb_storage" "sd_mod" ];
