@@ -80,6 +80,9 @@
   # I want fstrim
   services.fstrim.enable = true;
 
+  # I want it to follow EET/EEST
+  time.timeZone = "Europe/Bucharest";
+
   # Kernel changes
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
