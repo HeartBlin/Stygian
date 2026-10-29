@@ -28,7 +28,7 @@
   outputs = inputs: let
     inherit (inputs) self;
     inherit (inputs.nixpkgs) lib;
-    # forAllSystems = lib.genAttrs [ "x86_64-linux" ];
+    forAllSystems = lib.genAttrs [ "x86_64-linux" "aarch64-linux" ];
   in {
     # Find all hosts
     nixosConfigurations = with lib;
@@ -49,5 +49,15 @@
         if length v == 1
         then head v
         else throw "Duplicate '${k}': ${toString v}");
+
+    packages = forAllSystems (system: let
+      inherit (lib) readDir filterAttrs;
+      inherit (pkgs) callPackage;
+      pkgs = inputs.nixpkgs.legacyPackages.${system};
+    in
+      ./packages
+      |> readDir
+      |> filterAttrs (_: type: type == "directory")
+      |> builtins.mapAttrs (name: _: callPackage "${inputs.self}/packages/${name}" { }));
   };
 }
