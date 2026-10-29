@@ -1,4 +1,4 @@
-{ inputs, lib, pkgs, ... }:
+{ lib, pkgs, ... }:
 
 let
   ttyConfig = {
@@ -50,9 +50,13 @@ let
     window-padding-color = "extend";
   };
 in {
-  environment.systemPackages = [ inputs.aequor.packages.${pkgs.stdenv.hostPlatform.system}.ghostty-znver2 ];
-  hjem.users.primaryUser.files.".config/ghostty/config".text = lib.generators.toKeyValue { listsAsDuplicateKeys = true; } ttyConfig;
+  environment.systemPackages = [ pkgs.ghostty-znver2 ];
   fonts.packages = [ pkgs.nerd-fonts.caskaydia-cove ];
+  hjem.users.primaryUser.files.".config/ghostty/config".text =
+    lib.generators.toKeyValue
+    { listsAsDuplicateKeys = true; }
+    ttyConfig;
+
   programs.fish.interactiveShellInit = ''
     if set -q GHOSTTY_RESOURCES_DIR
       source "$GHOSTTY_RESOURCES_DIR/shell-integration/fish/vendor_conf.d/ghostty-shell-integration.fish"
