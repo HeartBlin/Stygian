@@ -1,4 +1,4 @@
-{ config, inputs, lib, pkgs, self, ... }:
+{ config, lib, pkgs, self, ... }:
 
 let
   settingsJSON = builtins.toJSON {
@@ -90,7 +90,7 @@ let
     "nix.serverPath" = "${lib.getExe pkgs.nixd}";
     "nix.serverSettings"."nixd" = {
       "formatting"."command" = [
-        "${lib.getExe inputs.aequor.packages.${pkgs.stdenv.system}.alejandra-bbo}"
+        "${lib.getExe self.packages.${pkgs.stdenv.system}.alejandra-custom}"
       ];
 
       "options"."nixos"."expr" = "(builtins.getFlake \"${self}\").nixosConfigurations.${config.networking.hostName}.options";
