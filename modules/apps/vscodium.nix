@@ -140,21 +140,25 @@ in {
 
         # Hell
         (pkief.material-icon-theme.overrideAttrs (x: {
-          postInstall =
+          postInstall = let
+            folderIcons = {
+              hosts = "batch";
+              Reason = "r";
+              Void = "mjml";
+            };
+
+            overrides = {
+              folderNames = lib.mapAttrs (_: i: "folder-${i}") folderIcons;
+              folderNamesExpanded = lib.mapAttrs (_: i: "folder-${i}-open") folderIcons;
+            };
+          in
             (x.postInstall or "")
             + ''
-              icons_json="$out/share/vscode/extensions/PKief.material-icon-theme/dist/material-icons.json"
-
-              ${pkgs.jq}/bin/jq '
-                .folderNames.hosts = "folder-batch" |
-                .folderNamesExpanded.hosts = "folder-batch-open" |
-                .folderNames.Reason = "folder-r" |
-                .folderNamesExpanded.Reason = "folder-r-open" |
-                .folderNames.Void = "folder-mjml" |
-                .folderNamesExpanded.Void = "folder-mjml-open"
-              ' $icons_json > tmp.json
-
-              mv tmp.json $icons_json
+              f="$out/share/vscode/extensions/PKief.material-icon-theme/dist/material-icons.json"
+              ${lib.getExe pkgs.jq} \
+                --argjson o ${lib.escapeShellArg (builtins.toJSON overrides)} \
+                '. * $o' "$f" > tmp.json
+              mv tmp.json "$f"
             '';
         }))
       ];
