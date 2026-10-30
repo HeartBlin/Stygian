@@ -21,6 +21,7 @@
     # Extras
     ./extras/disko.nix
     ./extras/networking.nix
+    ./extras/openssh.nix
 
     # Secrets
     ./secrets/agenix.nix
