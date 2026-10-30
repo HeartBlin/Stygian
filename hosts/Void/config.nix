@@ -93,6 +93,22 @@
     };
   };
 
+  # SSH Convenience
+  programs.ssh.extraConfig = ''
+    Host codeberg.org
+      HostName codeberg.org
+      User git
+      IdentityFile /home/heartblin/.ssh/Codeberg
+      IdentitiesOnly yes
+
+    Host Reason
+      HostName fd71:3362:beef:1::1
+      Port 22
+      User server
+      IdentityFile /home/heartblin/.ssh/Reason
+      IdentitiesOnly yes
+  '';
+
   # Identity
   networking.hostName = "Void";
   nixpkgs.hostPlatform = "x86_64-linux";
