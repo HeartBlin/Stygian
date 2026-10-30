@@ -35,6 +35,17 @@
   };
 
   ## Host specifics
+  # Folders and Permissions
+  users.groups = {
+    store = { gid = 100001; };
+    music = { gid = 100002; };
+  };
+
+  systemd.tmpfiles.rules = [
+    "z /data/music 2770 root music"
+    "z /data/store 2770 root store"
+  ];
+
   # I want fstrim
   services.fstrim.enable = true;
 
