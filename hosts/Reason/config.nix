@@ -22,6 +22,7 @@
     ddns-updater
     jellyfin
     nextcloud
+    restic
     slskd
     vaultwarden
 
