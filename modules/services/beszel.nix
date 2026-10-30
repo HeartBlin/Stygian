@@ -22,7 +22,7 @@ in {
       };
     };
 
-    caddy.virtualHosts."ifno.${domain}".extraConfig =
+    caddy.virtualHosts."info.${domain}".extraConfig =
       mTLS
       "reverse_proxy http://[::1]:8100";
   };
