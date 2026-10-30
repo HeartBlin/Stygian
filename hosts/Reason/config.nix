@@ -19,6 +19,7 @@
     # Services
     caddy
     ddns-updater
+    vaultwarden
 
     # Extras
     ./extras/disko.nix
