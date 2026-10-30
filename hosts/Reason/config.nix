@@ -19,6 +19,7 @@
     # Services
     caddy
     ddns-updater
+    nextcloud
     vaultwarden
 
     # Extras
