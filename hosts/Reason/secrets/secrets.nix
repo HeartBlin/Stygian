@@ -5,4 +5,5 @@ let
   allWithBackup = [ Void Reason Finality ];
 in {
   "caddy.age".publicKeys = allWithBackup;
+  "ddns-updater.json.age".publicKeys = allWithBackup;
 }

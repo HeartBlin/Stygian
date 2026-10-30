@@ -35,7 +35,7 @@
   outputs = inputs: let
     inherit (inputs) self;
     inherit (inputs.nixpkgs) lib;
-    forAllSystems = lib.genAttrs [ "x86_64-linux" "aarch64-linux" ];
+    forAllSystems = lib.genAttrs [ "x86_64-linux" ];
   in {
     # Find all hosts
     nixosConfigurations = with lib;

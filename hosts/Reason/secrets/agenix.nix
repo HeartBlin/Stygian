@@ -2,5 +2,10 @@
 
 {
   imports = [ inputs.agenix.nixosModules.default ];
-  age.secrets.caddy.file = "${self}/hosts/Reason/secrets/caddy.age";
+  age.secrets = let
+    path = "${self}/hosts/Reason/secrets";
+  in {
+    caddy.file = "${path}/caddy.age";
+    ddns-updater.file = "${path}/ddns-updater.json.age";
+  };
 }

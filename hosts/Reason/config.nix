@@ -17,6 +17,8 @@
     amd
 
     # Services
+    caddy
+    ddns-updater
 
     # Extras
     ./extras/disko.nix
