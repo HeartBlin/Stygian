@@ -7,5 +7,6 @@
   in {
     caddy.file = "${path}/caddy.age";
     ddns-updater.file = "${path}/ddns-updater.json.age";
+    slskd.file = "${path}/slskd.age";
   };
 }

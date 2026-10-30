@@ -6,4 +6,5 @@ let
 in {
   "caddy.age".publicKeys = allWithBackup;
   "ddns-updater.json.age".publicKeys = allWithBackup;
+  "slskd.age".publicKeys = allWithBackup;
 }

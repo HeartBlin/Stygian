@@ -21,6 +21,7 @@
     ddns-updater
     jellyfin
     nextcloud
+    slskd
     vaultwarden
 
     # Extras
