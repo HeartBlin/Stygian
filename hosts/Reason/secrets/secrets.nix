@@ -4,6 +4,7 @@ let
   Finality = "age1kzejm5zkyl2le0tuwln0p7k9kdrh6juzxl327dgn8qks4vs39u3qsacd58"; # Backup
   allWithBackup = [ Void Reason Finality ];
 in {
+  "beszel.age".publicKeys = allWithBackup;
   "caddy.age".publicKeys = allWithBackup;
   "ddns-updater.json.age".publicKeys = allWithBackup;
   "slskd.age".publicKeys = allWithBackup;

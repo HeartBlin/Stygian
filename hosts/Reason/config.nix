@@ -17,6 +17,7 @@
     amd
 
     # Services
+    beszel
     caddy
     ddns-updater
     jellyfin
