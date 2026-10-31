@@ -47,9 +47,6 @@
         "pipe-operators"
       ];
 
-      allowed-users = [ "@wheel" ];
-      trusted-users = [ "@wheel" ];
-
       connect-timeout = 5;
       download-attempts = 2;
       fallback = true; # In case Reason is dead

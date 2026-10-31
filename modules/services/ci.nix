@@ -2,7 +2,7 @@
 
 let
   inherit (config.nix.settings) experimental-features;
-  inherit (config.nix) package;
+  nix = config.nix.package;
 in {
   containers.nymph = {
     autoStart = true;
@@ -11,13 +11,12 @@ in {
       isReadOnly = true;
     };
 
-    config = _: {
+    config = { pkgs, ... }: {
       system.stateVersion = "26.11";
       nix.settings = { inherit experimental-features; };
       services.forgejo-runner.instances.nymph = {
         enable = true;
         secrets.server.connections.codeberg.token_url = "/run/secrets/ci";
-        hostPackages = [ package ];
         settings = {
           server.connections.codeberg = {
             url = "https://codeberg.org";
@@ -29,6 +28,14 @@ in {
             labels = [ "nixos-nymph:host" ];
           };
         };
+
+        hostPackages = [
+          pkgs.nodejs
+          pkgs.bash
+          nix
+          pkgs.deadnix
+          pkgs.statix
+        ];
       };
     };
   };
