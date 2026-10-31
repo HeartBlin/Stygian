@@ -57,6 +57,7 @@
         then head v
         else throw "Duplicate '${k}': ${toString v}");
 
+    # Find all packages
     packages = forAllSystems (system: let
       inherit (lib) readDir filterAttrs;
       inherit (pkgs) callPackage;
@@ -66,5 +67,25 @@
       |> readDir
       |> filterAttrs (_: type: type == "directory")
       |> builtins.mapAttrs (name: _: callPackage "${inputs.self}/packages/${name}" { }));
+
+    # For `nix flake checks`
+    checks = forAllSystems (system: let
+      pkgs = inputs.nixpkgs.legacyPackages.${system};
+    in {
+      overall = pkgs.writeShellApplication {
+        name = "check";
+        text = ''
+          deadnix --fail .
+          statix check . \
+            -i hosts/Reason/config.nix \
+            -i hosts/Void/config.nix
+        '';
+
+        runtimeInputs = [
+          pkgs.deadnix
+          pkgs.statix
+        ];
+      };
+    });
   };
 }

@@ -9,10 +9,4 @@ jobs:
     runs-on: nixos-nymph
     steps:
       - uses: actions/checkout@v7
-      - run: deadnix --fail .
-      - run: >
-          statix check .
-            -i hosts/Reason/config.nix
-            -i hosts/Void/config.nix
-
       - run: nix flake check --all-systems --quiet
