@@ -1,6 +1,9 @@
 { config, ... }:
 
-{
+let
+  inherit (config.nix.settings) experimental-features;
+  inherit (config.nix) package;
+in {
   containers.nymph = {
     autoStart = true;
     bindMounts."/run/secrets/ci" = {
@@ -10,10 +13,11 @@
 
     config = _: {
       system.stateVersion = "26.11";
+      nix.settings = { inherit experimental-features; };
       services.forgejo-runner.instances.nymph = {
         enable = true;
         secrets.server.connections.codeberg.token_url = "/run/secrets/ci";
-        hostPackages = [ config.nix.package ];
+        hostPackages = [ package ];
         settings = {
           server.connections.codeberg = {
             url = "https://codeberg.org";
