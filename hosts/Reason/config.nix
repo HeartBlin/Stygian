@@ -19,6 +19,7 @@
     # Services
     beszel
     caddy
+    ci
     ddns-updater
     jellyfin
     nextcloud

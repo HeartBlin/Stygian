@@ -6,6 +6,9 @@ let
 in {
   "beszel.age".publicKeys = allWithBackup;
   "caddy.age".publicKeys = allWithBackup;
+  "ci.age".publicKeys = allWithBackup;
   "ddns-updater.json.age".publicKeys = allWithBackup;
+  "resticEnvironment.age".publicKeys = allWithBackup;
+  "resticHealthChecks.age".publicKeys = allWithBackup;
   "slskd.age".publicKeys = allWithBackup;
 }
