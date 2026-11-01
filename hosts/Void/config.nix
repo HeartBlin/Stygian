@@ -39,6 +39,10 @@
   ];
 
   ## Module overrides
+  # asus.nix
+  services.asusd.auraConfigs."1866".source =
+    ./extras/aura_1866.ron;
+
   # git.nix
   programs.git.config.user = {
     name = "HeartBlin";
