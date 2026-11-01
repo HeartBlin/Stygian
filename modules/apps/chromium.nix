@@ -29,7 +29,8 @@
       "nngceckbapebfimnlniiiahkandclblb" # Bitwarden
       "ddkjiahejlhfcafbddmgiahcphecmpfh" # uBlock Origin Lite
       "jplgfhpmjnbigmhklmmbgecoobifkmpa" # ProtonVPN
-      "kpmjjdhbcfebfjgdnpjagcndoelnidfj"
+      "kpmjjdhbcfebfjgdnpjagcndoelnidfj" # Control Panel for Twitter
+      "gphhapmejobijbbhgpjhcjognlahblep" # GNOME Shell integration
     ];
 
     extraOpts = {
