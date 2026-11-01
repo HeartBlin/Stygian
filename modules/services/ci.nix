@@ -2,7 +2,7 @@
 
 let
   inherit (config.nix.settings) experimental-features;
-  nix = config.nix.package;
+  hostNix = config.nix.package;
 in {
   containers.nymph = {
     autoStart = true;
@@ -29,12 +29,14 @@ in {
           };
         };
 
-        hostPackages = [
-          pkgs.nodejs
-          pkgs.bash
-          nix
-          pkgs.deadnix
-          pkgs.statix
+        hostPackages = with pkgs; [
+          hostNix
+          nodejs
+          bash
+          deadnix
+          statix
+          forgejo-cli
+          nix-update
         ];
       };
     };
