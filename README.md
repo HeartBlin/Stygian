@@ -10,8 +10,6 @@ This is my repo for keeping my NixOS flake in. Inspired by:
 <div flex="true">
   <a href="https://github.com/TheMaxMur/NixOS-Configuration">TheMaxMur</a>
   •
-  <a href="https://github.com/fufexan/dotfiles">fufexan</a>
-  •
   <a href="https://github.com/rxyhn/yuki">rxyhn</a>
   •
   <a href="https://gitlab.com/fazzi/nixohess">fazzi</a>
