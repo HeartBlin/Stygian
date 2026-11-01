@@ -94,7 +94,7 @@ jobs:
           set -euo pipefail
           HOST="${GITHUB_SERVER_URL#*://}"
 
-          fj -H "$HOST" auth add-token "$GITHUB_ACTOR" "$TOKEN"
+          fj -H "$HOST" auth add-token "$TOKEN"
 
           body="$(printf 'Automated package updates.\n\n%s\n' \
             "$(git log --format='- %s' "$BASE_SHA..HEAD")")"
