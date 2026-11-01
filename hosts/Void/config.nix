@@ -8,6 +8,7 @@
     ghostty
     git
     mangohud
+    matrix
     nh
     shell
     vscodium
