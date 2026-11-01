@@ -8,7 +8,7 @@ jobs:
   check:
     runs-on: nixos-nymph
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@v5
 
       - name: Create update branch
         run: |
@@ -23,6 +23,7 @@ jobs:
           git config user.email "forgejo-actions[bot]@localhost"
 
       - name: Bump packages
+        id: bump
         run: |
           set -uo pipefail
           shopt -s nullglob
