@@ -95,7 +95,7 @@ jobs:
           HOST="${GITHUB_SERVER_URL#*://}"
 
           fj auth logout "$HOST"
-          printf '%s\n' "$TOKEN" | fj -H "$HOST" auth add-key forgejo-actions
+          printf '%s\n' "$TOKEN" | fj -H "$HOST" auth add-token forgejo-actions
 
           body="$(printf 'Automated package updates.\n\n%s\n' \
             "$(git log --format='- %s' "$BASE_SHA..HEAD")")"
