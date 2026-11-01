@@ -1,11 +1,7 @@
 { pkgs, ... }:
 
 {
-  boot = {
-    kernelParams = [ "i8042.nokbd" ];
-    initrd.kernelModules = [ "amdgpu" ];
-  };
-
+  boot.kernelParams = [ "i8042.nokbd" ];
   services = {
     supergfxd.enable = true;
     asusd.enable = true;
