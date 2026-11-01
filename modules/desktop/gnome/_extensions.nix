@@ -15,6 +15,7 @@
         blur-my-shell
         no-overview
         bluetooth-battery-meter
+        appindicator
       ])
       ++ [ self.packages.${pkgs.stdenv.hostPlatform.system}.gradia-capture ];
 
@@ -59,6 +60,9 @@
         level-indicator-color = lib.gvariant.mkInt32 0;
         circle-widget-color = lib.gvariant.mkInt32 1;
       };
+
+      # AppIndicator and KStatusNotifierItem Support
+      "org/gnome/shell/extensions/appindicator".tray-pos = "left";
     };
   };
 }

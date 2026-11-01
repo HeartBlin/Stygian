@@ -28,7 +28,7 @@ in {
 
   hjem.users.primaryUser.files = {
     ".config/vicinae/settings.json".text = builtins.toJSON {
-      "$schema" = "https://vicinae.com/schemas/config.json";
+      "$schema" = "https://vicinae.com/schemas/config.jsonc";
       pop_to_root_on_close = true;
       encrypt_sensitive_data = true;
       favicon_service = "google";
@@ -54,6 +54,10 @@ in {
         ignorePasswords = true;
         monitoring = true;
       };
+
+      tray.enabled = false;
+      updates.show_notice = false;
+      telemetry.system_info = false;
     };
 
     # Autostart
