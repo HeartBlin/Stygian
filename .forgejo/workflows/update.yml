@@ -96,7 +96,6 @@ jobs:
 
           fj auth logout "$HOST" || true
           fj -H "$HOST" auth add-token "$TOKEN"
-          fj -H "$HOST" whoami
 
           body="$(printf 'Automated package updates.\n\n%s\n' \
             "$(git log --format='- %s' "$BASE_SHA..HEAD")")"
