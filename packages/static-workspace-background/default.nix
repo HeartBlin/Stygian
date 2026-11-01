@@ -2,12 +2,12 @@
 
 pkgs.stdenvNoCC.mkDerivation rec {
   pname = "gnome-shell-extension-static-workspace-background";
-  version = "50.0-unstable-2026-08-15";
+  version = "51.0-unstable-2026-08-14";
   src = pkgs.fetchFromGitHub {
     owner = "CleoMenezesJr";
     repo = "static-workspace-background";
-    rev = "66cb74e62284a797a7a2e1fde70feda964bd8232";
-    hash = "sha256-AT2mWHRXXj7M3MnB4Bn/1uQGWTr3euBgNufLzkfJ4lI=";
+    rev = "3cfa3fbb2984d36e80f62e3f67d0f4b457843916";
+    hash = "sha256-BEz9NF64MvBte12fZk30SGJ2N1JyksRaf2AgUtFOOpk=";
   };
 
   dontBuild = true;
