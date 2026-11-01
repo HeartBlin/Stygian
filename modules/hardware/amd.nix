@@ -4,6 +4,7 @@
     kernelModules = [
       "kvm-amd"
       "amd-pstate"
+      "amdgpu"
     ];
   };
 
