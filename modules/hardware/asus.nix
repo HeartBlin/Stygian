@@ -1,5 +1,3 @@
-_:
-
 {
   boot.kernelParams = [ "i8042.nokbd" ];
   services = {

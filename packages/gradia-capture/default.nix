@@ -28,8 +28,7 @@ pkgs.stdenvNoCC.mkDerivation rec {
 
     mkdir -p "$extensionDir/schemas"
 
-    cp \
-      schemas/org.gnome.shell.extensions.gradia-companion.gschema.xml \
+    cp schemas/org.gnome.shell.extensions.gradia-companion.gschema.xml \
       "$extensionDir/schemas/"
 
     glib-compile-schemas "$extensionDir/schemas"
