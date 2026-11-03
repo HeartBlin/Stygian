@@ -18,8 +18,8 @@ This is my repo for keeping my NixOS flake in. Inspired by:
 </div>
 
 ### Hosts
-- [`Reason`](hosts/Reason/) - Server built out of whatever components. [`Specs`](hosts/Reason/specs.md)!
-- [`Void`](hosts/Void/) - ROG Strix G513 laptop, with some issues. [`Specs`](hosts/Void/specs.md)!
+- [`Reason`](hosts/Reason/) - Server built out of whatever components. [`Specs`](docs/rSpecs.md)!
+- [`Void`](hosts/Void/) - ROG Strix G513 laptop, with some issues. [`Specs`](docs/vSpecs.md)!
 
 ### Contributing
 

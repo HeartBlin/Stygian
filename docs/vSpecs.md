@@ -1,3 +1,5 @@
+### Void/Specs
+
 * Motherboard: `ROG Strix G513IE`
 * CPU: `AMD Ryzen 7 4800H`
 * RAM: `16 GB DDR4 3200`
