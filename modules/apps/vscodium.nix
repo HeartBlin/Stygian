@@ -1,14 +1,13 @@
 { config, lib, pkgs, self, ... }:
 
 let
-  settingsJSON = builtins.toJSON {
+  settingsJSON = pkgs.writeText "settings.json" (builtins.toJSON {
     # Bread.
     "breadcrumbs.icons" = false;
 
     # Editor - behavioural
     "editor.accessibilitySupport" = "off";
     "editor.guides.bracketPairs" = "active";
-    "editor.wordWrap" = "on";
 
     # Editor - appearance
     "editor.cursorBlinking" = "smooth";
@@ -105,28 +104,29 @@ let
       "editor.defaultFormatter" = "jnoortheen.nix-ide";
       "editor.formatOnSave" = true;
     };
-  };
+  });
 
-  keybindJSON = builtins.toJSON [
+  keybindJSON = pkgs.writeText "keybindings.hson" (builtins.toJSON [
     {
       key = "ctrl+l";
       command = "workbench.action.terminal.clear";
       when = "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported";
     }
-  ];
+  ]);
 
-  argvJSON = builtins.toJSON {
+  argvJSON = pkgs.writeText "argv.json" (builtins.toJSON {
     "enable-crash-reporter" = false;
     "crash-reporter-id" = "00000000-0000-0000-0000-000000000000";
     "password-store" = "gnome-libsecret";
-  };
+  });
 in {
   fonts.packages = [ pkgs.googlesans-code ];
-  hjem.users.primaryUser.files = {
-    ".vscode-oss/argv.json".text = argvJSON;
-    ".config/VSCodium/User/settings.json".text = settingsJSON;
-    ".config/VSCodium/User/keybindings.json".text = keybindJSON;
-  };
+
+  systemd.user.tmpfiles.rules = [
+    "L+ %h/.vscode-oss/argv.json - - - - ${argvJSON}"
+    "L+ %h/.config/VSCodium/User/keybindings.json - - - - ${keybindJSON}"
+    "L+ %h/.config/VSCodium/User/settings.json - - - - ${settingsJSON}"
+  ];
 
   environment.systemPackages = with pkgs; [
     (vscode-with-extensions.override {
