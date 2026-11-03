@@ -1,4 +1,4 @@
-{ pkgs, self, ... }:
+{ self, ... }:
 
 {
   imports = with self.nixosModules; [
@@ -7,7 +7,7 @@
     gaming
     ghostty
     git
-    mangohud
+    # mangohud
     matrix
     nh
     shell
@@ -34,6 +34,7 @@
     keys
 
     # Extras
+    ./extras/chaotic.nix
     ./extras/disko.nix
     ./extras/networking.nix
   ];
@@ -52,16 +53,6 @@
 
   # nh.nix
   programs.nh.flake = "/home/heartblin/Projects/Stygian";
-
-  # nvidia.nix
-  hardware.nvidia.prime = {
-    nvidiaBusId = "PCI:1@0:0:0";
-    amdgpuBusId = "PCI:5@0:0:0";
-    offload = {
-      enable = true;
-      enableOffloadCmd = true;
-    };
-  };
 
   # user.nix
   users.users.primaryUser = {
@@ -88,9 +79,11 @@
   # I want it to follow EET/EEST
   time.timeZone = "Europe/Bucharest";
 
+  # I want to update firmware
+  services.fwupd.enable = true;
+
   # Kernel changes
   boot = {
-    kernelPackages = pkgs.linuxPackages_latest;
     kernelModules = [ "kvm-amd" ];
     initrd = {
       availableKernelModules = [ "nvme" "xhci_pci" "usbhid" "usb_storage" "sd_mod" ];
