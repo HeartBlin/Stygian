@@ -18,6 +18,11 @@ let
     { path = "${payday}/mods"; label = "Mods"; }
     { path = "${payday}/assets/mod_overrides"; label = "Mod Overrides"; }
   ];
+
+  bookmarksFile = pkgs.writeText "gtk-bookmarks" (lib.concatLines (
+    map (dir: bookmark { path = dir; label = dir; }) userDirs
+    ++ map bookmark extraBookmarks
+  ));
 in {
   environment.systemPackages = with pkgs; [
     nautilus
@@ -41,8 +46,7 @@ in {
     ];
   };
 
-  hjem.users.primaryUser.files.".config/gtk-3.0/bookmarks".text = lib.concatLines (
-    map (dir: bookmark { path = dir; label = dir; }) userDirs
-    ++ map bookmark extraBookmarks
-  );
+  systemd.user.tmpfiles.rules = [
+    "L+ %h/.config/gtk-3.0/bookmarks - - - - ${bookmarksFile}"
+  ];
 }

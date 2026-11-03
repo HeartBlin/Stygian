@@ -10,7 +10,6 @@
     ./gnome/_appearance.nix
     ./gnome/_keybinds.nix
     ./gnome/_extensions.nix
-    ./gnome/_theme.nix
 
     # Standalone "features"
     ./gnome/_nautilus.nix
