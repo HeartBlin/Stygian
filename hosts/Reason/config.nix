@@ -28,7 +28,7 @@
     vaultwarden
 
     # Extras
-    ./extras/disko.nix
+    ./extras/hardware.nix
     ./extras/networking.nix
     ./extras/openssh.nix
 

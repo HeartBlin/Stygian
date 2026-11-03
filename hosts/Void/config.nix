@@ -7,7 +7,6 @@
     gaming
     ghostty
     git
-    # mangohud
     matrix
     nh
     shell
@@ -35,7 +34,7 @@
 
     # Extras
     ./extras/chaotic.nix
-    ./extras/disko.nix
+    ./extras/hardware.nix
     ./extras/networking.nix
   ];
 
