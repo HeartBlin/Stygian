@@ -30,6 +30,14 @@
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    chaotic = {
+      url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+      inputs = {
+        home-manager.follows = "null";
+        flake-schemas.follows = "null";
+      };
+    };
   };
 
   outputs = inputs: let
