@@ -16,7 +16,6 @@
         no-overview
         bluetooth-battery-meter
         appindicator
-        shotzy
       ])
       ++ [ self.packages.${pkgs.stdenv.hostPlatform.system}.gradia-capture ];
 
