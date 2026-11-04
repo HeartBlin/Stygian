@@ -3,17 +3,9 @@
 { lib, pkgs, self, ... }:
 
 {
-  environment = {
-    variables.TESSDATA_PREFIX = "${pkgs.tesseract}/share/tessdata";
-    sessionVariables.GI_TYPELIB_PATH = [
-      "${self.packages.${pkgs.stdenv.hostPlatform.system}.gnome-rounded-blur}/lib/girepository-1.0"
-    ];
-
-    systemPackages = [
-      pkgs.zbar
-      pkgs.tesseract
-    ];
-  };
+  environment.sessionVariables.GI_TYPELIB_PATH = [
+    "${self.packages.${pkgs.stdenv.hostPlatform.system}.gnome-rounded-blur}/lib/girepository-1.0"
+  ];
 
   _gnome = {
     extensions =
@@ -72,12 +64,6 @@
 
       # AppIndicator and KStatusNotifierItem Support
       "org/gnome/shell/extensions/appindicator".tray-pos = "left";
-
-      # Shotzy
-      "org/gnome/shell/extensions/shotzy" = {
-        show-google-lens-button = false;
-        show-qr-button = true;
-      };
     };
   };
 }
