@@ -16,6 +16,7 @@
     bootloader
     chrony
     nix
+    plymouth
     user
     zswap
 
