@@ -106,7 +106,7 @@ let
     };
   });
 
-  keybindJSON = pkgs.writeText "keybindings.hson" (builtins.toJSON [
+  keybindJSON = pkgs.writeText "keybindings.json" (builtins.toJSON [
     {
       key = "ctrl+l";
       command = "workbench.action.terminal.clear";
@@ -121,47 +121,41 @@ let
   });
 in {
   fonts.packages = [ pkgs.googlesans-code ];
-
   systemd.user.tmpfiles.rules = [
     "L+ %h/.vscode-oss/argv.json - - - - ${argvJSON}"
     "L+ %h/.config/VSCodium/User/keybindings.json - - - - ${keybindJSON}"
     "L+ %h/.config/VSCodium/User/settings.json - - - - ${settingsJSON}"
   ];
 
-  environment.systemPackages = with pkgs; [
-    (vscode-with-extensions.override {
-      vscode = vscodium;
-      vscodeExtensions = with pkgs.vscode-extensions; [
-        # Nix
-        jnoortheen.nix-ide
+  programs.vscode = {
+    enable = true;
+    package = pkgs.vscodium;
+    defaultEditor = true;
+    extensions = with pkgs.vscode-extensions; [
+      jnoortheen.nix-ide
+      usernamehw.errorlens
+      (pkief.material-icon-theme.overrideAttrs (x: {
+        postInstall = let
+          folderIcons = {
+            hosts = "batch";
+            Reason = "r";
+            Void = "mjml";
+          };
 
-        # UI / UX
-        usernamehw.errorlens
-
-        # Hell
-        (pkief.material-icon-theme.overrideAttrs (x: {
-          postInstall = let
-            folderIcons = {
-              hosts = "batch";
-              Reason = "r";
-              Void = "mjml";
-            };
-
-            overrides = {
-              folderNames = lib.mapAttrs (_: i: "folder-${i}") folderIcons;
-              folderNamesExpanded = lib.mapAttrs (_: i: "folder-${i}-open") folderIcons;
-            };
-          in
-            (x.postInstall or "")
-            + ''
-              f="$out/share/vscode/extensions/PKief.material-icon-theme/dist/material-icons.json"
-              ${lib.getExe pkgs.jq} \
-                --argjson o ${lib.escapeShellArg (builtins.toJSON overrides)} \
-                '. * $o' "$f" > tmp.json
-              mv tmp.json "$f"
-            '';
-        }))
-      ];
-    })
-  ];
+          overrides = {
+            folderNames = lib.mapAttrs (_: i: "folder-${i}") folderIcons;
+            folderNamesExpanded = lib.mapAttrs (_: i: "folder-${i}-open") folderIcons;
+          };
+        in
+          (x.postInstall or "")
+          + ''
+            f="$out/share/vscode/extensions/PKief.material-icon-theme/dist/material-icons.json"
+            ${lib.getExe pkgs.jq} \
+              --argjson o ${lib.escapeShellArg (builtins.toJSON overrides)} \
+              '. * $o' "$f" > tmp.json
+            mv tmp.json "$f"
+          '';
+      }))
+    ];
+  };
 }
