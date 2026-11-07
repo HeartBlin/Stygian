@@ -54,6 +54,16 @@
   # nh.nix
   programs.nh.flake = "/home/heartblin/Projects/Stygian";
 
+  # nvidia.nix
+  hardware.nvidia.prime = {
+    nvidiaBusId = "PCI:1@0:0:0";
+    amdgpuBusId = "PCI:5@0:0:0";
+    offload = {
+      enable = true;
+      enableOffloadCmd = true;
+    };
+  };
+
   # user.nix
   users.users.primaryUser = {
     name = "heartblin";
