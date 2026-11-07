@@ -3,10 +3,6 @@
 { lib, pkgs, self, ... }:
 
 {
-  environment.sessionVariables.GI_TYPELIB_PATH = [
-    "${self.packages.${pkgs.stdenv.hostPlatform.system}.gnome-rounded-blur}/lib/girepository-1.0"
-  ];
-
   _gnome = {
     extensions =
       (with pkgs.gnomeExtensions; [
