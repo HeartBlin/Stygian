@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 let
-  inherit (import ./_caddy.nix) domain mTLS;
+  inherit (import ./utils/_caddy.nix) domain mTLS;
 in {
   users.users.nextcloud.extraGroups = [ "music" "store" ];
   services = {

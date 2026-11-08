@@ -1,7 +1,7 @@
 { config, ... }:
 
 let
-  inherit (import ./_caddy.nix) domain mTLS;
+  inherit (import ./utils/_caddy.nix) domain mTLS;
 in {
   services = {
     slskd = {
