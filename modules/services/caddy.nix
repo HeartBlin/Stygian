@@ -14,7 +14,7 @@
     enable = true;
     enableReload = true;
     package = pkgs.caddy.withPlugins {
-      hash = "sha256-VJgAmT1q1wcqt7o7HrK2+ONfZrfI/QW2v3d6ZSMh718=";
+      hash = "sha256-q86gQb5S1bg383aqd1bQuuoURWHuz8E8IPP1s2LEXq8=";
       plugins = [ "github.com/caddy-dns/ovh@v1.1.0" ];
     };
 
