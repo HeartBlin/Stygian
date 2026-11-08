@@ -24,7 +24,7 @@ This is my repo for keeping my NixOS flake in. Inspired by:
 ### Preview
 ![Desktop preview for the Void host](.forgejo/preview.webp)
 
-_Screenshot taken on: <b>2026-10-06</b>_
+_Screenshot taken on: <b>2026-09-21</b>_
 
 ### Disclaimer
 
