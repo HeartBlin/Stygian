@@ -1,5 +1,4 @@
 {
-  domain = "heartblin.eu";
   mTLS = x: ''
     tls {
       client_auth {

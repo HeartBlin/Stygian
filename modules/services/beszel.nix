@@ -1,7 +1,8 @@
 { config, ... }:
 
 let
-  inherit (import ./utils/_caddy.nix) domain mTLS;
+  inherit (import ./utils/_domain.nix) domain;
+  inherit (import ./utils/_mTLS.nix) mTLS;
 in {
   services = {
     beszel = {
