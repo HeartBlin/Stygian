@@ -1,9 +1,9 @@
 # How things look graphically speaking
-{ lib, pkgs, ... }:
+{ lib, pkgs, self, ... }:
 
 let
   cursor = {
-    package = pkgs.bibata-cursors;
+    package = self.packages.${pkgs.stdenv.hostPlatform.system}.bibata-modern-ice;
     theme = "Bibata-Modern-Ice";
     size = 24;
   };
