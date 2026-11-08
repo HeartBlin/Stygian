@@ -45,10 +45,13 @@
     ./extras/aura_1866.ron;
 
   # git.nix
-  programs.git.config.user = {
-    name = "HeartBlin";
-    email = "HeartBlin@noreply.codeberg.org";
-    signingkey = "/home/heartblin/.ssh/Codeberg";
+  programs.git.config = {
+    gpg.ssh.allowedSignersFile = "/home/heartblin/.ssh/allowed_signers";
+    user = {
+      name = "HeartBlin";
+      email = "HeartBlin@noreply.codeberg.org";
+      signingkey = "/home/heartblin/.ssh/Codeberg.pub";
+    };
   };
 
   # nh.nix
