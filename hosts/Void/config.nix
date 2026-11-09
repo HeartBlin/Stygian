@@ -1,4 +1,4 @@
-{ self, ... }:
+{ pkgs, self, ... }:
 
 {
   imports = with self.nixosModules; [
@@ -34,7 +34,6 @@
     keys
 
     # Extras
-    ./extras/chaotic.nix
     ./extras/hardware.nix
     ./extras/networking.nix
   ];
@@ -97,6 +96,7 @@
 
   # Kernel changes
   boot = {
+    kernelPackages = pkgs.linuxPackages_latest;
     kernelModules = [ "kvm-amd" ];
     initrd = {
       availableKernelModules = [ "nvme" "xhci_pci" "usbhid" "usb_storage" "sd_mod" ];
