@@ -2,7 +2,7 @@
 
 stdenvNoCC.mkDerivation {
   pname = "bibata-modern-ice";
-  version = "0-unstable-2026-10-31";
+  version = "1.1.0-unstable-2026-10-31";
 
   src = fetchFromGitHub {
     owner = "rtgiskard";
