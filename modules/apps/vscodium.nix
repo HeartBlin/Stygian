@@ -24,19 +24,26 @@ let
     "explorer.confirmDelete" = false;
     "explorer.confirmDragAndDrop" = false;
     "explorer.fileNesting.enabled" = true;
-    "explorer.fileNesting.patterns"."flake.nix" = "flake.lock";
+    "explorer.fileNesting.patterns" = {
+      "Cargo.toml" = "Cargo.lock";
+      "flake.nix" = "flake.lock";
+    };
 
     # Files
     "files.autoSave" = "onWindowChange";
     "files.insertFinalNewline" = true;
     "files.trimTrailingWhitespace" = true;
-    "files.watcherExclude"."**/.direnv/**" = true;
+    "files.watcherExclude" = {
+      "**/.direnv/**" = true;
+      "**/target/**" = true;
+    };
 
     # Search
     "search.exclude" = {
       "**/.direnv" = true;
       "**/result" = true;
       "**/result-*" = true;
+      "**/target" = true;
     };
 
     # Terminal
@@ -104,6 +111,16 @@ let
       "editor.defaultFormatter" = "jnoortheen.nix-ide";
       "editor.formatOnSave" = true;
     };
+
+    # Language Server - Rust
+    "rust-analyzer.server.path" = "${lib.getExe pkgs.rust-analyzer}";
+    "rust-analyzer.check.command" = "clippy";
+    "rust-analyzer.cargo.sysrootSrc" = "${pkgs.rustPlatform.rustLibSrc}";
+
+    "[rust]" = {
+      "editor.defaultFormatter" = "rust-lang.rust-analyzer";
+      "editor.formatOnSave" = true;
+    };
   });
 
   keybindJSON = pkgs.writeText "keybindings.json" (builtins.toJSON [
@@ -127,6 +144,15 @@ in {
     "L+ %h/.config/VSCodium/User/settings.json - - - - ${settingsJSON}"
   ];
 
+  environment.systemPackages = with pkgs; [
+    rustc
+    cargo
+    clippy
+    rustfmt
+    rust-analyzer
+    gcc
+  ];
+
   programs.vscode = {
     enable = true;
     package = pkgs.vscodium;
@@ -134,6 +160,7 @@ in {
     extensions = with pkgs.vscode-extensions; [
       jnoortheen.nix-ide
       usernamehw.errorlens
+      rust-lang.rust-analyzer
       (pkief.material-icon-theme.overrideAttrs (x: {
         postInstall = let
           folderIcons = {

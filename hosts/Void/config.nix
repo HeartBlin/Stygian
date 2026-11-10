@@ -1,4 +1,4 @@
-{ pkgs, self, ... }:
+{ inputs, pkgs, self, ... }:
 
 {
   imports = with self.nixosModules; [
@@ -36,7 +36,14 @@
     # Extras
     ./extras/hardware.nix
     ./extras/networking.nix
+    inputs.vibrant.nixosModules.default
   ];
+
+  ## Self Modules
+  programs.vibrant = {
+    enable = true;
+    flake = "/home/heartblin/Projects/Stygian";
+  };
 
   ## Module overrides
   # asus.nix

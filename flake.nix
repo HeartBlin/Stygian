@@ -2,6 +2,10 @@
   inputs = {
     nixpkgs.url = "https://channels.nixos.org/nixos-unstable/nixexprs.tar.zst";
     null.url = "git+https://codeberg.org/HeartBlin/Null.git";
+    vibrant = {
+      url = "git+https://codeberg.org/HeartBlin/Vibrant.git";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     lanzaboote = {
       url = "github:nix-community/lanzaboote";

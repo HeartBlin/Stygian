@@ -114,7 +114,8 @@
         "lanzaboote": "lanzaboote",
         "nix-index-database": "nix-index-database",
         "nixpkgs": "nixpkgs",
-        "null": "null"
+        "null": "null",
+        "vibrant": "vibrant"
       }
     },
     "rust-overlay": {
@@ -136,6 +137,26 @@
         "owner": "oxalica",
         "repo": "rust-overlay",
         "type": "github"
+      }
+    },
+    "vibrant": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1794352303,
+        "narHash": "sha256-E0qPRG7vW30UlOVGfI3TKqCAI55ar3+iW1w2hLM+vgg=",
+        "ref": "refs/heads/main",
+        "rev": "d92a1be4a09ddff3571fa305e4e6fb7039eaa1cd",
+        "revCount": 8,
+        "type": "git",
+        "url": "https://codeberg.org/HeartBlin/Vibrant.git"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://codeberg.org/HeartBlin/Vibrant.git"
       }
     }
   },
