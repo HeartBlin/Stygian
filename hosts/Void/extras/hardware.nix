@@ -16,17 +16,25 @@ in {
   };
 
   boot = {
-    resumeDevice = "${osDisk}-part2";
-    initrd.luks.devices."crypted" = {
-      device = "${osDisk}-part3";
-      allowDiscards = true;
-      crypttabExtraOpts = [ "fido2-device=auto" ];
+    resumeDevice = "/dev/mapper/swap-crypted";
+    initrd.luks.devices = {
+      "crypted" = {
+        device = "${osDisk}-part3";
+        allowDiscards = true;
+        crypttabExtraOpts = [ "fido2-device=auto" ];
+      };
+
+      "swap-crypted" = {
+        device = "${osDisk}-part2";
+        allowDiscards = true;
+        crypttabExtraOpts = [ "fido2-device=auto" ];
+      };
     };
   };
 
   swapDevices = [
     {
-      device = "${osDisk}-part2";
+      device = "/dev/mapper/swap-crypted";
       discardPolicy = "both";
     }
   ];
