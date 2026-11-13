@@ -12,6 +12,7 @@
         no-overview
         bluetooth-battery-meter
         appindicator
+        hibernate-power-menu
       ])
       ++ [ self.packages.${pkgs.stdenv.hostPlatform.system}.gradia-capture ];
 
@@ -59,6 +60,9 @@
 
       # AppIndicator and KStatusNotifierItem Support
       "org/gnome/shell/extensions/appindicator".tray-pos = "left";
+
+      # Hibernate Power Menu
+      "org/gnome/shell/extensions/hibernate-power-menu".show-hybrid-sleep = false;
     };
   };
 }
