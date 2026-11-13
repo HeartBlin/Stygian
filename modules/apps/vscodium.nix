@@ -161,6 +161,11 @@ in {
       jnoortheen.nix-ide
       usernamehw.errorlens
       rust-lang.rust-analyzer
+      bierner.markdown-preview-github-styles
+      bierner.markdown-emoji
+      bierner.markdown-checkbox
+      bierner.markdown-footnotes
+      bierner.github-markdown-preview
       (pkief.material-icon-theme.overrideAttrs (x: {
         postInstall = let
           folderIcons = {
