@@ -1,4 +1,4 @@
-{ inputs, pkgs, self, ... }:
+{ pkgs, self, ... }:
 
 {
   imports = with self.nixosModules; [
@@ -14,9 +14,9 @@
 
     # Core
     bootloader
+    bootvine
     chrony
     nix
-    plymouth
     user
     zswap
 
@@ -36,14 +36,7 @@
     # Extras
     ./extras/hardware.nix
     ./extras/networking.nix
-    inputs.vibrant.nixosModules.default
   ];
-
-  ## Self Modules
-  programs.vibrant = {
-    enable = true;
-    flake = "/home/heartblin/Projects/Stygian";
-  };
 
   ## Module overrides
   # asus.nix
