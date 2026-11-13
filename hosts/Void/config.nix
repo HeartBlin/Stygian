@@ -10,6 +10,7 @@
     matrix
     nh
     shell
+    vms
     vscodium
 
     # Core
