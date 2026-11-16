@@ -16,9 +16,6 @@
           "JXLImageFormat"
           "MiddleClickAutoscroll"
         ]}"
-        "--disable-features=${lib.concatStringsSep "," [
-          "WaylandWpColorManagerV1"
-        ]}"
       ];
     })
   ];
