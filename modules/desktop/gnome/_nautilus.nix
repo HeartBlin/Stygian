@@ -3,12 +3,12 @@
 let
   inherit (config.users.users.primaryUser) home;
 
-  bookmark = { path, label }: "file://${home}/${path} ${label}";
   userDirs = [
     "Documents"
     "Downloads"
     "Music"
     "Pictures"
+    "Projects"
     "Public"
     "Videos"
   ];
@@ -18,11 +18,6 @@ let
     { path = "${payday}/mods"; label = "Mods"; }
     { path = "${payday}/assets/mod_overrides"; label = "Mod Overrides"; }
   ];
-
-  bookmarksFile = pkgs.writeText "gtk-bookmarks" (lib.concatLines (
-    map (dir: bookmark { path = dir; label = dir; }) userDirs
-    ++ map bookmark extraBookmarks
-  ));
 in {
   environment.systemPackages = with pkgs; [
     nautilus
@@ -46,7 +41,16 @@ in {
     ];
   };
 
-  systemd.user.tmpfiles.rules = [
-    "L+ %h/.config/gtk-3.0/bookmarks - - - - ${bookmarksFile}"
-  ];
+  hjem.users.primaryUser.files.".config/gtk-3.0/bookmarks" = {
+    generator = { home, userDirs, extraBookmarks }: lib.concatLines (
+      map
+      (dir: "file://${home}/${dir} ${dir}")
+      userDirs
+      ++ map
+      ({ path, label }: "file://${home}/${path} ${label}")
+      extraBookmarks
+    );
+
+    value = { inherit home userDirs extraBookmarks; };
+  };
 }

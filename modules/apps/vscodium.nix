@@ -1,7 +1,8 @@
 { config, lib, pkgs, self, ... }:
 
 let
-  settingsJSON = pkgs.writeText "settings.json" (builtins.toJSON {
+  inherit (builtins) toJSON;
+  settings = {
     # Bread.
     "breadcrumbs.icons" = false;
 
@@ -121,28 +122,32 @@ let
       "editor.defaultFormatter" = "rust-lang.rust-analyzer";
       "editor.formatOnSave" = true;
     };
-  });
+  };
 
-  keybindJSON = pkgs.writeText "keybindings.json" (builtins.toJSON [
+  kbd = [
     {
       key = "ctrl+l";
       command = "workbench.action.terminal.clear";
       when = "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported";
     }
-  ]);
+  ];
 
-  argvJSON = pkgs.writeText "argv.json" (builtins.toJSON {
+  argv = {
     "enable-crash-reporter" = false;
     "crash-reporter-id" = "00000000-0000-0000-0000-000000000000";
     "password-store" = "gnome-libsecret";
-  });
+  };
 in {
   fonts.packages = [ pkgs.googlesans-code ];
-  systemd.user.tmpfiles.rules = [
-    "L+ %h/.vscode-oss/argv.json - - - - ${argvJSON}"
-    "L+ %h/.config/VSCodium/User/keybindings.json - - - - ${keybindJSON}"
-    "L+ %h/.config/VSCodium/User/settings.json - - - - ${settingsJSON}"
-  ];
+
+  hjem.users.primaryUser.files = {
+    ".vscode-oss/argv.json" = { generator = toJSON; value = argv; };
+    ".config/VSCodium/User/settings.json" = { generator = toJSON; value = settings; };
+    ".config/VSCodium/User/keybindings.json" = {
+      generator = x: toJSON x.y; # It doesnt fucking take lists. ffs
+      value.y = kbd;
+    };
+  };
 
   environment.systemPackages = with pkgs; [
     rustc

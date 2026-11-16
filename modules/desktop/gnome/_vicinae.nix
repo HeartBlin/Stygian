@@ -6,7 +6,7 @@ let
     icon_theme = "Adwaita";
   };
 
-  vicinaeSettings = pkgs.writeText "vicinae-settings.json" (builtins.toJSON {
+  vicinaeSettings = {
     "$schema" = "https://vicinae.com/schemas/config.jsonc";
     pop_to_root_on_close = true;
     encrypt_sensitive_data = true;
@@ -37,7 +37,7 @@ let
     tray.enabled = false;
     updates.show_notice = false;
     telemetry.system_info = false;
-  });
+  };
 
   vicinaeDesktop = pkgs.writeText "vicinae.desktop" ''
     [Desktop Entry]
@@ -69,7 +69,8 @@ in {
   };
 
   environment.etc."xdg/autostart/vicinae.desktop".source = vicinaeDesktop;
-  systemd.user.tmpfiles.rules = [
-    "L+ %h/.config/vicinae/settings.json - - - - ${vicinaeSettings}"
-  ];
+  hjem.users.primaryUser.files.".config/vicinae/settings.json" = {
+    generator = builtins.toJSON;
+    value = vicinaeSettings;
+  };
 }

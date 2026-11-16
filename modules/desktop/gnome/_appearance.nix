@@ -29,7 +29,5 @@ in {
   };
 
   # X11 cursor fix
-  systemd.user.tmpfiles.rules = [
-    "L+ %h/.icons/${cursor.theme} - - - - ${cursor.package}/share/icons/${cursor.theme}"
-  ];
+  hjem.users.primaryUser.files.".icons/${cursor.theme}".source = "${cursor.package}/share/icons/${cursor.theme}";
 }

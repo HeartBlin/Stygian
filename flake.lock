@@ -72,6 +72,26 @@
         "type": "github"
       }
     },
+    "hjem": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1794842388,
+        "narHash": "sha256-k/nDw1zTlCmhA2K3odt/gy4uDiS002x8Nc14lQxvpY8=",
+        "owner": "feel-co",
+        "repo": "hjem",
+        "rev": "2f56c85f80a52c23fb3e956119ca80975a2b9ceb",
+        "type": "github"
+      },
+      "original": {
+        "owner": "feel-co",
+        "repo": "hjem",
+        "type": "github"
+      }
+    },
     "lanzaboote": {
       "inputs": {
         "crane": "crane_2",
@@ -149,6 +169,7 @@
       "inputs": {
         "agenix": "agenix",
         "bootvine": "bootvine",
+        "hjem": "hjem",
         "lanzaboote": "lanzaboote",
         "nix-index-database": "nix-index-database",
         "nixpkgs": "nixpkgs",
