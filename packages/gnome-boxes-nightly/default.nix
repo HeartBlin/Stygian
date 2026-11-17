@@ -6,7 +6,7 @@ let
 in
   pkgs.stdenv.mkDerivation {
     pname = "gnome-boxes-nightly";
-    version = "0-unstable-1970-01-01";
+    version = "0-unstable-2026-10-14";
     src = pkgs.fetchFromGitLab {
       domain = "gitlab.gnome.org";
       owner = "felipeborges";
