@@ -2,7 +2,7 @@
 
 pkgs.libvirt-glib.overrideAttrs (_: {
     pname = "libvirt-glib-nightly";
-    version = "0-unstable-1970-01-01";
+    version = "0-unstable-2026-10-09";
 
     src = pkgs.fetchFromGitLab {
       domain = "gitlab.gnome.org";
