@@ -2,7 +2,7 @@
 
 pkgs.stdenv.mkDerivation {
   pname = "libmks";
-  version = "0-unstable-1970-01-01";
+  version = "0.1.5-unstable-2026-09-09";
 
   src = pkgs.fetchFromGitLab {
     domain = "gitlab.gnome.org";
