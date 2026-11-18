@@ -1,6 +1,9 @@
 { inputs, lib, pkgs, ... }:
 
 {
+  imports = [ inputs.nixos-core.nixosModules.default ];
+  system.nixos-core.enable = true;
+
   documentation = {
     enable = false;
     doc.enable = false;

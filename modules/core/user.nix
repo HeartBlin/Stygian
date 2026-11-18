@@ -2,7 +2,7 @@
 
 {
   imports = [ inputs.hjem.nixosModules.default ];
-  services.userborn.enable = true;
+
   users.users.primaryUser = {
     isNormalUser = true;
     initialPassword = "changeme";
@@ -15,7 +15,4 @@
     user = config.users.users.primaryUser.name;
     directory = config.users.users.primaryUser.home;
   };
-
-  # For some fucking reason hjem doesnt want lists in `value`
-  # even though for builtins.JSON it is valid. ffs
 }
