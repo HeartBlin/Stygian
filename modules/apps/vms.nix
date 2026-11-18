@@ -1,4 +1,4 @@
-{ pkgs, self, ... }:
+{ lib, pkgs, self, ... }:
 
 let
   ovmfEnroll =
@@ -32,11 +32,12 @@ in {
     self.packages.${pkgs.stdenv.hostPlatform.system}.gnome-boxes-nightly
     pkgs.passt
     pkgs.swtpm
-    pkgs.remmina
   ];
 
+  systemd.services.libvirtd.wantedBy = lib.mkForce [ ];
   virtualisation.libvirtd = {
     enable = true;
+    onBoot = "ignore";
     qemu = {
       package = qemuWithEnrolledOVMF;
       swtpm.enable = true;
