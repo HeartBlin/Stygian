@@ -1,6 +1,6 @@
-{ inputs, ... }:
-
 {
-  imports = [ inputs.bootvine.nixosModules.default ];
-  services.bootvine.enable = true;
+  services.bootvine = {
+    enable = true;
+    settings.timing.keep-final-frame-for = "500ms";
+  };
 }
