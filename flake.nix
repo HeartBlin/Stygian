@@ -1,47 +1,7 @@
 {
-  inputs = {
-    nixpkgs.url = "https://channels.nixos.org/nixos-unstable/nixexprs.tar.zst";
-    null.url = "git+https://codeberg.org/HeartBlin/Null.git";
-    hyperbolic.url = "git+https://codeberg.org/HeartBlin/Hyperbolic.git";
-
-    lanzaboote = {
-      url = "github:nix-community/lanzaboote";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        pre-commit.follows = "null";
-      };
-    };
-
-    nix-index-database = {
-      url = "github:nix-community/nix-index-database";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    agenix = {
-      url = "github:ryantm/agenix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    hjem = {
-      url = "github:feel-co/hjem";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    nixos-core = {
-      url = "github:manic-systems/nixos-core";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    circus = {
-      url = "github:manic-systems/circus";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-  };
-
-  outputs = inputs: let
-    inherit (inputs) self;
+  outputs = { self }: let
+    inputs = import ./.tack;
     inherit (inputs.nixpkgs) lib;
-    forAllSystems = lib.genAttrs [ "x86_64-linux" ];
   in {
     # Find all hosts
     nixosConfigurations = with lib;
@@ -64,7 +24,7 @@
         else throw "Duplicate '${k}': ${toString v}");
 
     # For `nix flake checks`
-    checks = forAllSystems (system: let
+    checks = lib.genAttrs [ "x86_64-linux" ] (system: let
       pkgs = inputs.nixpkgs.legacyPackages.${system};
     in {
       overall = pkgs.writeShellApplication {

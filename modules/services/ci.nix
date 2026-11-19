@@ -35,7 +35,6 @@ in {
           bash
           deadnix
           statix
-          forgejo-cli
           tack
         ];
       };

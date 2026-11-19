@@ -1,0 +1,32 @@
+[all_follow]
+nixpkgs = "nixpkgs"
+crane = "crane"
+
+[inputs.nixpkgs]
+url = "https://channels.nixos.org/nixos-unstable/nixexprs.tar.zst"
+
+[inputs.null]
+url = "git+https://codeberg.org/HeartBlin/Null.git"
+
+[inputs.hyperbolic]
+url = "git+https://codeberg.org/HeartBlin/Hyperbolic.git"
+exclude_follow = [ "nixpkgs" ]
+
+[inputs.lanzaboote]
+url = "github:nix-community/lanzaboote"
+follows = { pre-commit = "null" }
+
+[inputs.nix-index-database]
+url = "github:nix-community/nix-index-database"
+
+[inputs.agenix]
+url = "github:ryantm/agenix"
+
+[inputs.hjem]
+url = "github:feel-co/hjem"
+
+[inputs.nixos-core]
+url = "github:manic-systems/nixos-core"
+
+[inputs.circus]
+url = "github:manic-systems/circus"
