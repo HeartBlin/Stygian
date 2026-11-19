@@ -171,6 +171,7 @@ in {
       bierner.markdown-checkbox
       bierner.markdown-footnotes
       bierner.github-markdown-preview
+      tamasfe.even-better-toml
       (pkief.material-icon-theme.overrideAttrs (x: {
         postInstall = let
           folderIcons = {
