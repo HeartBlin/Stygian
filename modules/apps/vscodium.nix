@@ -177,7 +177,7 @@ in {
             hosts = "batch";
             Reason = "r";
             Void = "mjml";
-            tack = "repository";
+            ".tack" = "repository";
           };
 
           overrides = {

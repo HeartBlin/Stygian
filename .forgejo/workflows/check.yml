@@ -8,5 +8,11 @@ jobs:
   check:
     runs-on: nixos-nymph
     steps:
-      - uses: actions/checkout@v7
-      - run: nix flake check --all-systems --quiet
+      - name: Checkout
+        uses: https://data.forgejo.org/actions/checkout@v7
+        with:
+          ref: main
+          token: ${{ secrets.FORGEJO_TOKEN }}
+
+      - name: Run check
+        run: nix flake check --all-systems

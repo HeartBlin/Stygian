@@ -36,6 +36,7 @@ in {
           deadnix
           statix
           forgejo-cli
+          tack
         ];
       };
     };
