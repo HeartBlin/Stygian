@@ -50,6 +50,16 @@
         "pipe-operators"
       ];
 
+      substituters = [
+        "https://cache.nixos.org"
+        "https://cache.heartblin.eu/nix-cache"
+      ];
+
+      trusted-public-keys = [
+        "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+        "cache.heartblin.eu-1:H5dUOEabeo7ytKW/UshbZ5+bWWgrKwH3aMyKP32qP6g="
+      ];
+
       connect-timeout = 5;
       download-attempts = 2;
       fallback = true; # In case Reason is dead

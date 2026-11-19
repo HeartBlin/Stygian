@@ -36,15 +36,6 @@ in {
           deadnix
           statix
           forgejo-cli
-          (nix-update.overridePythonAttrs (x: {
-            postPatch =
-              (x.postPatch or "")
-              + ''
-                substituteInPlace nix_update/options.py \
-                  --replace-fail '"nix", "flake", "metadata", "--json"' '"nix", "flake", "prefetch", "--json"' \
-                  --replace-fail 'metadata.get("path")' 'metadata.get("storePath")'
-              '';
-          }))
         ];
       };
     };

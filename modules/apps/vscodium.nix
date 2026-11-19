@@ -1,4 +1,4 @@
-{ config, lib, pkgs, self, ... }:
+{ config, inputs, lib, pkgs, self, ... }:
 
 let
   inherit (builtins) toJSON;
@@ -97,7 +97,7 @@ let
     "nix.serverPath" = "${lib.getExe pkgs.nixd}";
     "nix.serverSettings"."nixd" = {
       "formatting"."command" = [
-        "${lib.getExe self.packages.${pkgs.stdenv.system}.alejandra-custom}"
+        "${lib.getExe inputs.hyperbolic.packages.${pkgs.stdenv.system}.alejandra-custom}"
       ];
 
       "options"."nixos"."expr" = "(builtins.getFlake \"${self}\").nixosConfigurations.${config.networking.hostName}.options";
@@ -177,6 +177,7 @@ in {
             hosts = "batch";
             Reason = "r";
             Void = "mjml";
+            tack = "repository";
           };
 
           overrides = {

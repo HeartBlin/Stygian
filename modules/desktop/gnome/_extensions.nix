@@ -1,6 +1,6 @@
 # Shell extensions
 # Again, Vicinae and co. do their own thing
-{ lib, pkgs, self, ... }:
+{ inputs, lib, pkgs, ... }:
 
 {
   _gnome = {
@@ -14,7 +14,7 @@
         appindicator
         hibernate-power-menu
       ])
-      ++ [ self.packages.${pkgs.stdenv.hostPlatform.system}.gradia-capture ];
+      ++ [ inputs.hyperbolic.packages.${pkgs.stdenv.hostPlatform.system}.gradia-capture ];
 
     dconf.user = {
       # Just Perfection

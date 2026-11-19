@@ -2,6 +2,7 @@
   inputs = {
     nixpkgs.url = "https://channels.nixos.org/nixos-unstable/nixexprs.tar.zst";
     null.url = "git+https://codeberg.org/HeartBlin/Null.git";
+    hyperbolic.url = "git+https://codeberg.org/HeartBlin/Hyperbolic.git";
 
     lanzaboote = {
       url = "github:nix-community/lanzaboote";
@@ -30,6 +31,11 @@
       url = "github:manic-systems/nixos-core";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    circus = {
+      url = "github:manic-systems/circus";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs: let
@@ -56,17 +62,6 @@
         if length v == 1
         then head v
         else throw "Duplicate '${k}': ${toString v}");
-
-    # Find all packages
-    packages = forAllSystems (system: let
-      inherit (lib) readDir filterAttrs;
-      inherit (pkgs) callPackage;
-      pkgs = inputs.nixpkgs.legacyPackages.${system};
-    in
-      ./packages
-      |> readDir
-      |> filterAttrs (_: type: type == "directory")
-      |> builtins.mapAttrs (name: _: callPackage "${inputs.self}/packages/${name}" { }));
 
     # For `nix flake checks`
     checks = forAllSystems (system: let

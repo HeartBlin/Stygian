@@ -1,9 +1,9 @@
 # How things look graphically speaking
-{ lib, pkgs, self, ... }:
+{ inputs, lib, pkgs, ... }:
 
 let
   cursor = {
-    package = self.packages.${pkgs.stdenv.hostPlatform.system}.bibata-modern-ice;
+    package = inputs.hyperbolic.packages.${pkgs.stdenv.hostPlatform.system}.bibata-modern-ice;
     theme = "Bibata-Modern-Ice";
     size = 24;
   };

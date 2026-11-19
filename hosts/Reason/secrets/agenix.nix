@@ -12,5 +12,9 @@
     resticEnvironment.file = "${path}/resticEnvironment.age";
     resticHealthChecks.file = "${path}/resticHealthCheck.age";
     slskd.file = "${path}/slskd.age";
+
+    circusAdminKey.file = "${path}/circusKey.age";
+    circusAdminPassword.file = "${path}/circusPass.age";
+    circusSigningKey.file = "${path}/circusSign.age";
   };
 }

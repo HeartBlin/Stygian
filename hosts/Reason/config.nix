@@ -20,6 +20,7 @@
     beszel
     caddy
     ci
+    circus
     ddns-updater
     jellyfin
     nextcloud

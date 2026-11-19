@@ -7,6 +7,9 @@ in {
   "beszel.age".publicKeys = allWithBackup;
   "caddy.age".publicKeys = allWithBackup;
   "ci.age".publicKeys = allWithBackup;
+  "circusKey.age".publicKeys = allWithBackup;
+  "circusPass.age".publicKeys = allWithBackup;
+  "circusSign.age".publicKeys = allWithBackup;
   "ddns-updater.json.age".publicKeys = allWithBackup;
   "resticEnvironment.age".publicKeys = allWithBackup;
   "resticHealthChecks.age".publicKeys = allWithBackup;
